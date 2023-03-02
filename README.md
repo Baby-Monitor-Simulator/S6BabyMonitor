@@ -10,7 +10,9 @@ This is a group project for Fontys and the Eindhoven University of Technology.
 
 ## Dependencies
 ### Adding Matlab Engine to Project:
-IntelliJ Idea Instructions:
+This should be handled automatically by Gradle. If using other package managers, the instructions below may help:
+
+_IntelliJ Idea Instructions_:
 - File -> Project Structure
 - Libraries
 - Click on + to add library
