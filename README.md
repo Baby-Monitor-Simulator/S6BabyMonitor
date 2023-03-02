@@ -8,6 +8,15 @@ This is a group project for Fontys and the Eindhoven University of Technology.
   - Repository Frontend: https://github.com/Baby-Monitor-Simulator/s6-baby-monitor-simulator-webui
 - Contributing Rules: https://github.com/Baby-Monitor-Simulator/S6BabyMonitor/wiki/Contributing-Rules
 
+## Dependencies
+### Adding Matlab Engine to Project:
+IntelliJ Idea Instructions:
+- File -> Project Structure
+- Libraries
+- Click on + to add library
+- Add `engine.jar` probably here: `C:\Program Files\MATLAB\R2022b\extern\engines\java\jar`
+- Select all projects
+
 ## Context
 A technique, known as Cardiotocography (CTG), can be used to monitor the fetal heartbeat and the uterine contractions during pregnancy and labour. The interpretation of CTGs can be difficult, with healthcare professionals needing extensive training, to correctly determine the results of a CTG (whether the baby is at risk and proactive action needs to be taken for example). 
 
@@ -15,7 +24,7 @@ A mathematical model has been developed in MATLAB that can be used to describe t
 
 See https://research.tue.nl/en/publications/a-mathematical-model-for-simulation-of-fetal-heart-rate-decelerat for additional information on this mathematical model. 
 
-__This project will be able to improve the decision making of healthcare professionals throughout their career, ultimately rendering better outcomes for potential future babies at risk.__
+__This project will be able to improve the decision-making of healthcare professionals throughout their career, ultimately rendering better outcomes for potential future babies at risk.__
 
 ## Project Proposal
 **The project is primarily aimed at providing a tool for healthcare professional to train their CTG interpretation skills on.**
