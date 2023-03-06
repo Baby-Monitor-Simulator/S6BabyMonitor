@@ -1,6 +1,7 @@
 ### Custom
 *.idea/inspectionProfiles
 .idea/
+!lib/*
 
 ### Java template
 # Compiled class file
