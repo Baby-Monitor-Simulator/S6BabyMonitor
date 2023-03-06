@@ -1,7 +1,11 @@
-fun main(args: Array<String>) {
-    println("Hello World!")
+import com.mathworks.engine.MatlabEngine
 
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
+fun main()  {
+    val eng = MatlabEngine.startMatlab()
+    val p = doubleArrayOf(1.0, -1.0, -6.0)
+    val r: DoubleArray = eng.feval("roots", p)
+    for (e in r) {
+        println(e)
+    }
+    eng.close()
 }
