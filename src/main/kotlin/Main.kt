@@ -1,35 +1,24 @@
-import com.mathworks.engine.MatlabEngine
+import java.util.*
 
 fun main()  {
     val matlab = MatlabConnection()
 
-    //first run the model
-    matlab.RunModel(MatlabModel.MainModel)
+    matlab.runModel(MatlabModel.MainModel)
 
-    //get single variable
-    val singleVal = matlab.GetSingleVar(MatlabSingleVariable.oxcycle)
+    val singleVal = matlab.getSingleVar(MatlabSingleVariable.oxcycle)
     println("")
     println("Single Value")
     println(singleVal)
 
-    //get double array
-    val doubleArray = matlab.GetDoubleArray(MatlabDoubleArray.fcavdata)
+    val doubleArray = matlab.getDoubleArray(MatlabDoubleArray.fcavdata)
     println("")
     println("Single Dimensional Array")
-    doubleArray.forEach {
-        println(it)
-    }
+    println(doubleArray.joinToString(","))
 
-    //get multiDimDoubleArray
-    val multiDimDoubleArray = matlab.GetMultiDimDoubleArray(MatlabMultiDimDoubleArray.msegdata)
+    val multiDimDoubleArray = matlab.getMultiDimDoubleArray(MatlabMultiDimDoubleArray.msegdata)
     println("")
     println("Multi Dimensional Array")
-    multiDimDoubleArray.forEach {outer->
-        outer.forEach {inner->
-            print("$inner,")
-        }
-        println("")
-    }
-    //when done always stop the matlab engine
-    matlab.Stop()
+    println(Arrays.deepToString(multiDimDoubleArray))
+
+    matlab.stop()
 }
