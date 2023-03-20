@@ -13,6 +13,7 @@ repositories {
 dependencies {
     testImplementation(kotlin("test"))
     implementation(files("./lib/engine.jar"))
+    implementation(files("./lib/javabuilder.jar"))
 }
 
 tasks.test {
