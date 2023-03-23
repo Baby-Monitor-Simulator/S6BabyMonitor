@@ -1,24 +1,7 @@
-import java.util.*
+fun main(args: Array<String>) {
+    println("Hello World!")
 
-fun main()  {
-    val matlab = MatlabConnection()
-
-    matlab.runModel(MatlabModel.MainModel)
-
-    val singleVal = matlab.getSingleVar(MatlabSingleVariable.oxcycle)
-    println("")
-    println("Single Value")
-    println(singleVal)
-
-    val doubleArray = matlab.getDoubleArray(MatlabDoubleArray.fcavdata)
-    println("")
-    println("Single Dimensional Array")
-    println(doubleArray.joinToString(","))
-
-    val multiDimDoubleArray = matlab.getMultiDimDoubleArray(MatlabMultiDimDoubleArray.msegdata)
-    println("")
-    println("Multi Dimensional Array")
-    println(Arrays.deepToString(multiDimDoubleArray))
-
-    matlab.stop()
+    // Try adding program arguments via Run/Debug configuration.
+    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
+    println("Program arguments: ${args.joinToString()}")
 }
