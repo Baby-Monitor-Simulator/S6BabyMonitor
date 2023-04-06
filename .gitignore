@@ -116,3 +116,6 @@ gradle-app.setting
 .classpath
 
 /.idea/
+
+!engine.jar
+!javabuilder.jar

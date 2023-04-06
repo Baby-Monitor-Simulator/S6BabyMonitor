@@ -29,6 +29,8 @@ dependencies {
     implementation("io.ktor:ktor-server-content-negotiation-jvm:$ktor_version")
     implementation("io.ktor:ktor-server-auto-head-response-jvm:$ktor_version")
 
+    implementation(files("./lib/engine.jar"))
+
     testImplementation(kotlin("test"))
 
     runtimeOnly("ch.qos.logback:logback-classic:$logback_version")
