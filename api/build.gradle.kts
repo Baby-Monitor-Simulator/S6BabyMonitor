@@ -28,6 +28,7 @@ dependencies {
     implementation("io.ktor:ktor-serialization-kotlinx-json-jvm:$ktor_version")
     implementation("io.ktor:ktor-server-content-negotiation-jvm:$ktor_version")
     implementation("io.ktor:ktor-server-auto-head-response-jvm:$ktor_version")
+    implementation("io.ktor:ktor-server-sessions:$ktor_version")
 
     testImplementation(kotlin("test"))
 
@@ -40,9 +41,9 @@ tasks.test {
 }
 
 kotlin {
-    jvmToolchain(8)
+    jvmToolchain(19)
 }
 
 application {
-    mainClass.set("MainKt")
+    mainClass.set("org.fontys.MainKt")
 }
