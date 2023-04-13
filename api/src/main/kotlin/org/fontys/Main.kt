@@ -33,7 +33,7 @@ fun Application.application() {
         }
     }
     install(CORS) {
-        allowHost("localhost:4173")
+        allowHost("127.0.0.1:4173")
     }
 
     routing {
