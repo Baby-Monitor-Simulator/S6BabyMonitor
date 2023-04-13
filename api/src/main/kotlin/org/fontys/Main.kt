@@ -6,6 +6,7 @@ import io.ktor.server.application.*
 import io.ktor.server.netty.*
 import io.ktor.server.plugins.autohead.*
 import io.ktor.server.plugins.contentnegotiation.*
+import io.ktor.server.plugins.cors.routing.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.server.sessions.*
@@ -30,6 +31,9 @@ fun Application.application() {
         cookie<Session>("session") {
             cookie.maxAge = Duration.INFINITE
         }
+    }
+    install(CORS) {
+        allowHost("localhost:4173")
     }
 
     routing {
