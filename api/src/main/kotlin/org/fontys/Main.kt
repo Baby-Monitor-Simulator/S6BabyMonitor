@@ -10,7 +10,9 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.server.sessions.*
 import io.ktor.util.cio.*
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
 import org.fontys.json.Session
 import org.fontys.json.SettingsPatch
@@ -52,12 +54,16 @@ fun Application.application() {
                 get {
                     call.response.cacheControl(CacheControl.NoCache(null))
                     try {
-                        call.respondTextWriter(contentType = ContentType.Text.EventStream) {
-                            while (true) { // TODO: Exit when client disconnects
-                                val value = Random().nextFloat(10f)
-                                write("data: $value\n\n")
-                                flush()
-                                delay(250)
+                        withContext(Dispatchers.IO) {
+                            call.respondTextWriter(contentType = ContentType.Text.EventStream) {
+                                var index = 0
+                                while (true) { // TODO: Exit when client disconnects
+                                    val value = Random().nextFloat(10f)
+                                    write("data: $index\n\n")
+                                    flush()
+                                    index++
+                                    delay(250)
+                                }
                             }
                         }
                     } catch (ignored: ChannelWriteException) { }
