@@ -38,15 +38,9 @@ fun Application.application() {
         route("/api") {
             route("/settings") {
                 patch<SettingsPatch> {
-                    /*var id = call.request.cookies["ID"]
-                if (id == null) {
-                    id = UUID.randomUUID().toString()
-                    call.response.cookies.append("ID", id)
-                }*/
-                    val session = call.sessions.get<Session>()
-
-
-                    // TODO: Change actual settings
+                    val session = call.sessions.getOrSet<Session> { Session(UUID.randomUUID().toString(), 90) }
+                    val new = session.copy(heartRate = it.heartRate)
+                    call.sessions.set(new)
                 }
             }
 
