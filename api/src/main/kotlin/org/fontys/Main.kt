@@ -38,8 +38,14 @@ fun Application.application() {
         route("/api") {
             route("/settings") {
                 patch<SettingsPatch> {
-                    val session = call.sessions.getOrSet<Session> { Session(UUID.randomUUID().toString(), 90) }
-                    val new = session.copy(heartRate = it.heartRate)
+                    val session = call.sessions.getOrSet { Session(UUID.randomUUID().toString(), 0, 0, 0, 0, 0) }
+                    val new = session.copy(
+                        fetalHeartRate = it.fetalHeartRate,
+                        fetalBloodPressure = it.fetalBloodPressure,
+                        fetalBloodSaturation = it.fetalBloodSaturation,
+                        umbilicalArteryBloodFlow = it.umbilicalArteryBloodFlow,
+                        uterineContractions = it.uterineContractions
+                    )
                     call.sessions.set(new)
                 }
             }
