@@ -1,6 +1,8 @@
 ### Custom
 *.idea/inspectionProfiles
 .idea/
+.vscode/*
+.vscode
 
 ### Java template
 # Compiled class file
