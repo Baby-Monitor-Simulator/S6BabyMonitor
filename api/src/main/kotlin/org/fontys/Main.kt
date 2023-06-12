@@ -18,6 +18,7 @@ import kotlinx.serialization.json.Json
 import org.fontys.json.GraphData
 import org.fontys.json.Session
 import org.fontys.json.SettingsPatch
+import java.time.Instant
 import java.util.*
 import kotlin.time.Duration
 
@@ -61,7 +62,8 @@ fun Application.application() {
                     try {
                         withContext(Dispatchers.IO) {
                             call.respondTextWriter(contentType = ContentType.Text.EventStream) {
-                                var now = 0L
+                                val start = Instant.now().toEpochMilli()
+                                var now = start
 
                                 while (true) { // TODO: Exit when client disconnects
                                     val fetalBlood = Random().nextInt(120)
@@ -69,7 +71,7 @@ fun Application.application() {
                                     write(
                                         "data: " + Json.encodeToString(
                                             GraphData(
-                                                now,
+                                                now - start,
                                                 fetalBlood,
                                                 fetalBlood,
                                                 fetalBlood,
@@ -79,7 +81,7 @@ fun Application.application() {
                                     )
                                     flush()
 
-                                    now += 250L // TODO: Base on actual time passed
+                                    now = Instant.now().toEpochMilli()
                                     delay(250)
                                 }
                             }
