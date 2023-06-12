@@ -4,7 +4,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class GraphData(
-    val x: Int,
+    val x: Long,
     val fetalBlood: Int,
     val fetalBloodPressure: Int,
     val uterineContractions: Int,

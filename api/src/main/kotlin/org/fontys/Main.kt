@@ -54,14 +54,14 @@ fun Application.application() {
 
             route("/sse") {
                 get {
-                    val session = call.sessions.getOrSet { Session(UUID.randomUUID().toString(), 90) }
+                    val session = call.sessions.getOrSet { Session(UUID.randomUUID().toString(), 0, 0, 0, 0, 0) }
 
                     call.response.cacheControl(CacheControl.NoCache(null))
 
                     try {
                         withContext(Dispatchers.IO) {
                             call.respondTextWriter(contentType = ContentType.Text.EventStream) {
-                                var index = 0
+                                var now = 0L
 
                                 while (true) { // TODO: Exit when client disconnects
                                     val fetalBlood = Random().nextInt(120)
@@ -69,7 +69,7 @@ fun Application.application() {
                                     write(
                                         "data: " + Json.encodeToString(
                                             GraphData(
-                                                index,
+                                                now,
                                                 fetalBlood,
                                                 fetalBlood,
                                                 fetalBlood,
@@ -79,7 +79,7 @@ fun Application.application() {
                                     )
                                     flush()
 
-                                    index++
+                                    now += 250L // TODO: Base on actual time passed
                                     delay(250)
                                 }
                             }
