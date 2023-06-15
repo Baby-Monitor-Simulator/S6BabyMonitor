@@ -72,10 +72,10 @@ fun Application.application() {
                                         "data: " + Json.encodeToString(
                                             GraphData(
                                                 now - start,
-                                                fetalBlood,
-                                                fetalBlood,
-                                                fetalBlood,
-                                                fetalBlood
+                                                Random().nextInt(10, 21),
+                                                Random().nextInt(35, 56),
+                                                Random().nextInt(0, 101),
+                                                Random().nextInt(60, 201)
                                             )
                                         ) + "\n\n"
                                     )
